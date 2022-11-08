@@ -13,6 +13,7 @@
             margin: 0;
             background: #000;
             overflow: hidden;
+            position: relative;
         }
         canvas {
             position: absolute;
@@ -22,6 +23,13 @@
             animation: beat 1s infinite alternate;
             transform-origin: center;
         }
+        canvas:first-child {
+            position: absolute;
+            z-index: 1;
+        }
+        canvas:nth-child(2){
+            z-index: 2;
+        }
         @keyframes beat{
             to { transform: scale(1.4); }
         }
@@ -29,7 +37,14 @@
 </HEAD>
 <BODY>
 <canvas id="pinkboard"></canvas>
+<canvas id="name"></canvas>
 <script>
+  var canvas = document.getElementById("name");
+  var ctx = canvas.getContext("2d");
+  ctx.font = "bold 10px serif";
+  ctx.fillStyle = "#ea80b0";
+  ctx.textAlign = "center";
+  ctx.fillText('Ly nu', canvas.width/2, canvas.height/2);
   /*
  * Settings
  */
